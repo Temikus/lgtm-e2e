@@ -1,0 +1,63 @@
+# LGTM config. Read from the base branch, so a PR can't change it.
+# Check it with `lgtm config validate`.
+
+provider = "openrouter"        # openrouter | typesafe
+model = "typesafe/jev-1.13"
+
+# shadow reports what LGTM would have done and gates nothing. Run in shadow
+# first, then calibrate with `lgtm replay --write` before switching to
+# enforce. Enforce mode belongs alongside required human reviewers, never
+# instead of them.
+mode = "shadow"
+
+# Shadow-mode thresholds. A [calibration] table for the configured model
+# replaces them.
+approve_at = 0.9
+deny_at = 0.1
+
+# A cap question (injection) below this holds approve at needs-human.
+# `lgtm replay --lists` shows what each value would hold.
+# cap_at = 0.3
+
+# A veto question (malicious) below this denies, whatever the score.
+# veto_at = 0.4
+
+# A lockfile change that resolves a package from outside npm, PyPI,
+# crates.io, RubyGems, or pub.dev holds approve. Add private registries:
+# lockfile_registries = ["npm.example.com"]
+
+# A failed required check holds approve. Ruleset checks are read from
+# GitHub; with classic branch protection, name them here:
+# ci_required = ["test", "lint"]
+
+# Changes to these paths always need a human. Setting this replaces the
+# defaults; [] turns the check off.
+# sensitive_paths = [".github/workflows/**", ".github/actions/**", "**/action.yml", "**/action.yaml", "CODEOWNERS", ".github/CODEOWNERS", "docs/CODEOWNERS"]
+
+# A diff larger than this (added plus deleted lines, excluded files left
+# out) needs a human. 0 turns the check off.
+# max_changed_lines = 1000
+
+# Fork PRs from authors without write access never get approve.
+trust_forks = false
+
+# Matching files are listed but their patches are not sent to the model.
+# Setting this replaces the defaults.
+# exclude = ["**/*.lock", "**/go.sum", "**/package-lock.json", "**/pnpm-lock.yaml", "vendor/**", "**/*.pb.go", "**/*.min.*"]
+
+# Turn a default question into a gate, switch one off, or add your own.
+# [questions.described]
+# gate = true
+#
+# hygiene holds approve below its own cap_at (default 0.8):
+# [questions.hygiene]
+# cap_at = 0.7
+#
+# tested is informational by default; make it a gate again with:
+# [questions.tested]
+# gate = true
+#
+# [questions.migration_safe]
+# type = "noul"
+# gate = true
+# instructions = "If the diff adds a database migration, can it run without locking large tables?"
