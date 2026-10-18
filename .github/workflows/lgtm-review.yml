@@ -22,4 +22,4 @@ jobs:
       contents: read
     # No checkout or other steps here either: see lgtm.yml.
     steps:
-      - uses: Temikus/lgtm@main
+      - uses: Temikus/lgtm@307323d5be01d1bb6e268e8683b49e7a4290a236 # main
