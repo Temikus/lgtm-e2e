@@ -33,7 +33,7 @@ jobs:
     steps:
       # For supply-chain safety, pin to a full commit SHA instead:
       #   uses: Temikus/lgtm@<commit SHA> # main
-      - uses: Temikus/lgtm@307323d5be01d1bb6e268e8683b49e7a4290a236 # main
+      - uses: Temikus/lgtm@6589f5a786d9e646b9f0cf734dd7c4f5ffb5432f # v0.1.0
         with:
           # Use a dedicated key with a spend limit.
           api-key: ${{ secrets.OPENROUTER_API_KEY }}
