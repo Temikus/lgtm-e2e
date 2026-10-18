@@ -8,7 +8,9 @@ model = "typesafe/jev-1.13"
 # first, then calibrate with `lgtm replay --write` before switching to
 # enforce. Enforce mode belongs alongside required human reviewers, never
 # instead of them.
-mode = "shadow"
+mode = "enforce"
+# Scratch repo only: enforce without a calibration, to test the approval flow.
+allow_uncalibrated = true
 
 # Shadow-mode thresholds. A [calibration] table for the configured model
 # replaces them.
